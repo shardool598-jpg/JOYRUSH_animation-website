@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@700;800&display=swap");
+
+:root {
+  --jr-cream: #fbf9ec;
+  --jr-purple: #2b1c48;
+
+  --jr-bg-color: #fdf8f0;
+  --jr-text-color: #2d1b4e;
+  --jr-cloud-bg: #fbf6ed;
+  --jr-accent-red: #d92b2b;
+}
+
+/* --- Hero Section --- */
+.jr-hero {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 1000px;
+  padding: 60px 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  background-color: var(--jr-bg-color);
+  color: var(--jr-text-color);
+  font-family: "Montserrat", sans-serif;
+}
+
+/* --- Header Content --- */
+.jr-heading {
+  text-align: center;
+  z-index: 10;
+  margin-bottom: 40px;
+  position: relative;
+  margin-top: 40px;
+}
+
+.jr-heading h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.jr-heading p {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  max-width: 500px;
+  margin: 0 auto 30px;
+  line-height: 1.5;
+}
+
+/* --- CTA Button (pill/morph style) --- */
+.jr-cta-stage {
+  position: relative;
+  width: 240px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  left: 24%;
+}
+
+.jr-cta-pill {
+  position: absolute;
+  left: 77px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 110px;
+  height: 52px;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--jr-cream);
+  border: 2px solid var(--jr-purple);
+  color: var(--jr-purple);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.jr-cta-morph {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--jr-purple);
+  background: var(--jr-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  /* resting position: outside the RIGHT border of the pill */
+  transform: translate(187px, -50%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.6, 0.64, 1),
+    background 0.4s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+/* hovering the pill OR the circle: slide to outside the LEFT border,
+   flush against it (circle's right edge = pill's left edge, 65px) */
+.jr-cta-stage:hover .jr-cta-morph {
+  transform: translate(25px, -50%);
+  background: var(--jr-purple);
+}
+
+.jr-cta-morph svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.jr-cta-arrow {
+  stroke: var(--jr-purple);
+  transition: stroke 0.4s ease;
+}
+.jr-cta-stage:hover .jr-cta-arrow {
+  stroke: var(--jr-cream);
+}
+.jr-cta-stage:hover .jr-cta-morph svg {
+  transform: rotate(45deg);
+}
+
+/* --- Cloud Badges --- */
+.jr-cloud-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through empty space */
+  z-index: 5;
+}
+
+.jr-cloud {
+  position: absolute;
+  width: 220px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: auto;
+  animation: jr-float 6s ease-in-out infinite;
+}
+
+.jr-cloud__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--jr-text-color); /* Sets the border color via currentColor */
+  z-index: -1;
+  filter: drop-shadow(0 4px 10px rgba(45, 27, 78, 0.08));
+}
+
+.jr-cloud span {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding: 0 30px;
+  color: var(--jr-text-color);
+}
+
+/* Cloud positions */
+.jr-cloud--1 { top: 13%; left: 8%; transform: rotate(-5deg); animation-delay: 0s; }
+.jr-cloud--2 { top: 17%; right: 8%; transform: rotate(5deg); animation-delay: 1s; }
+.jr-cloud--3 { top: 47%; left: 2%; transform: rotate(-3deg); animation-delay: 2s; }
+.jr-cloud--4 { top: 47%; right: 2%; transform: rotate(4deg); animation-delay: 1.5s; }
+.jr-cloud--5 { bottom: -12%; left: 5%; transform: rotate(-6deg); animation-delay: 0.5s; }
+.jr-cloud--6 { bottom: -12%; right: 5%; transform: rotate(5deg); animation-delay: 2.5s; }
+
+@keyframes jr-float {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-15px) rotate(var(--rot, 0deg)); }
+}
+
+/* --- Products --- */
+.jr-products {
+  position: absolute;
+  bottom: -62px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 550px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.jr-product {
+  position: absolute;
+  bottom: 0;
+  pointer-events: auto;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.jr-product:hover {
+  transform: translateY(-10px) scale(1.02) !important;
+  z-index: 10 !important;
+}
+
+.jr-product img {
+  max-height: 550px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(45, 27, 78, 0.15));
+}
+
+/* Product positions */
+.jr-product--green {
+  left: 12%;
+  bottom: 20px;
+  transform: rotate(-12deg);
+  z-index: 1;
+  opacity: 0.85;
+}
+.jr-product--green img { max-height: 480px; }
+
+.jr-product--purple {
+  left: 32%;
+  bottom: -10px;
+  transform: rotate(-3deg);
+  z-index: 3;
+}
+.jr-product--purple img { max-height: 580px; }
+
+.jr-product--pink {
+  right: 32%;
+  bottom: -10px;
+  transform: rotate(3deg);
+  z-index: 3;
+}
+.jr-product--pink img { max-height: 580px; }
+
+.jr-product--maroon {
+  right: 12%;
+  bottom: 20px;
+  transform: rotate(12deg);
+  z-index: 1;
+  opacity: 0.85;
+}
+.jr-product--maroon img { max-height: 480px; }
+
+/* --- Bottom Right Icons --- */
+.jr-icons {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 15px;
+  z-index: 20;
+}
+
+.jr-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--jr-accent-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--jr-bg-color);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.jr-icon:hover {
+  background: var(--jr-accent-red);
+}
+.jr-icon:hover svg { stroke: white; }
+
+.jr-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--jr-accent-red);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+  .jr-cloud { width: 180px; height: 120px; }
+  .jr-cloud span { font-size: 0.9rem; padding: 0 20px; }
+  .jr-product img { max-height: 400px; }
+  .jr-product--purple img, .jr-product--pink img { max-height: 450px; }
+  .jr-product--green img, .jr-product--maroon img { max-height: 350px; }
+}
+
+@media (max-width: 768px) {
+  .jr-hero { min-height: auto; padding-bottom: 100px; }
+  .jr-cloud-layer {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .jr-cloud {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    animation: none;
+  }
+  .jr-cloud:hover { transform: scale(1.05) !important; }
+
+  .jr-products {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .jr-product {
+    position: relative;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+  .jr-product img { max-height: 300px; }
+  .jr-icons { position: fixed; bottom: 20px; right: 20px; }
+}

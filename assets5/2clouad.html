@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy Rush - More Joy More Often</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@700&family=Inter:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0a0c0;
+            background-image: 
+                radial-gradient(ellipse at 20% 50%, rgba(255, 150, 180, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 120, 160, 0.2) 0%, transparent 50%);
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        /* Logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #8B1A1A;
+            font-weight: 700;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-text {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            font-weight: 900;
+            color: #8B1A1A;
+            line-height: 0.95;
+            letter-spacing: -2px;
+            animation: textReveal 1.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero-text h2:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .hero-text h2:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes textReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Parallax Images */
+        .parallax-image {
+            position: absolute;
+            z-index: 3;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        .parallax-image img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(139, 26, 26, 0.15));
+        }
+
+        .image-left {
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+        }
+
+        .image-right {
+            right: -20px;
+            top: 10%;
+            transform: translateY(0);
+            width: 260px;
+        }
+
+        /* Email Form */
+        .email-form {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            background: #FFF8F0;
+            border-radius: 12px;
+            padding: 8px 8px 8px 24px;
+            box-shadow: 0 8px 32px rgba(139, 26, 26, 0.15);
+            width: 480px;
+            max-width: 90%;
+            animation: formSlideUp 1s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes formSlideUp {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -30%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .email-form input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            color: #8B1A1A;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .email-form input::placeholder {
+            color: #c49090;
+            font-weight: 600;
+        }
+
+        .email-form button {
+            background: #8B1A1A;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .email-form button:hover {
+            background: #6B1010;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            padding: 40px 0 60px;
+            border-top: 1px solid rgba(139, 26, 26, 0.1);
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #8B1A1A;
+            margin-bottom: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #8B1A1A;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-column ul li a:hover {
+            color: #5a0e0e;
+            transform: translateX(5px);
+        }
+
+        /* Bottom Icons */
+        .bottom-icons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(139, 26, 26, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #8B1A1A;
+        }
+
+        .icon-circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(139, 26, 26, 0.25);
+        }
+
+        .icon-circle svg {
+            width: 24px;
+            height: 24px;
+            fill: #8B1A1A;
+        }
+
+        /* Text shimmer animation */
+        .shimmer-text {
+            background: linear-gradient(
+                90deg,
+                #8B1A1A 0%,
+                #a02020 25%,
+                #8B1A1A 50%,
+                #a02020 75%,
+                #8B1A1A 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Pulse animation for images */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .parallax-image img {
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-text h2 {
+                font-size: 5rem;
+            }
+            .image-left, .image-right {
+                width: 200px;
+            }
+            .footer {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h2 {
+                font-size: 3.5rem;
+            }
+            .image-left, .image-right {
+                display: none;
+            }
+            .email-form {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                margin: 20px auto;
+            }
+            @keyframes formSlideUp {
+                0% { opacity: 0; transform: translateY(20px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <h1>Joy Rush</h1>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero" id="hero">
+            <!-- Left Parallax Image -->
+            <div class="parallax-image image-left" data-speed="0.03">
+                <img src="2clouadu3.png" alt="Two friends laughing">
+            </div>
+
+            <!-- Hero Text -->
+            <div class="hero-text">
+                <h2 class="shimmer-text">MORE JOY</h2>
+                <h2 class="shimmer-text">MORE OFTEN</h2>
+            </div>
+
+            <!-- Right Parallax Image -->
+            <div class="parallax-image image-right" data-speed="0.04">
+                <img src="2cloadu2.png" alt="Person with colorful dots">
+            </div>
+
+            <!-- Email Form -->
+            <div class="email-form">
+                <input type="email" placeholder="ENTER YOUR EMAIL...">
+                <button>NOTIFY ME</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-column">
+                <h3>DRINKS</h3>
+                <ul>
+                    <li><a href="#">TROPICAL TANGERINE</a></li>
+                    <li><a href="#">RUBY ORANGE</a></li>
+                    <li><a href="#">LUSH CHERRY</a></li>
+                    <li><a href="#">WILD BERRIES</a></li>
+                    <li><a href="#">VARIETY PACK</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>GUMMIES</h3>
+                <ul>
+                    <li><a href="#">SOCIAL SPARK</a></li>
+                    <li><a href="#">SWEET DREAMS</a></li>
+                    <li><a href="#">PURE ZEN</a></li>
+                    <li><a href="#">STRESS MELT</a></li>
+                    <li><a href="#">DAILY ELEVATION</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>EXPLORE</h3>
+                <ul>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">FIND US</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>JOY RUSH</h3>
+                <ul>
+                    <li><a href="#">CONTACT US</a></li>
+                    <li><a href="#">MY ACCOUNT</a></li>
+                    <li><a href="#">LAB RESULTS</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="#">REFUND POLICY</a></li>
+                    <li><a href="#">PRIVACY POLICY</a></li>
+                    <li><a href="#">SHIPPING POLICY</a></li>
+                    <li><a href="#">TERMS OF SERVICE</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Icons -->
+    <div class="bottom-icons">
+        <div class="icon-circle">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C10 2 8 3 8 5C8 3 6 2 4 2C2 2 2 4 2 6C2 10 6 14 12 22C18 14 22 10 22 6C22 4 22 2 20 2C18 2 16 3 16 5C16 3 14 2 12 2Z"/>
+            </svg>
+        </div>
+        <div class="icon-circle">
+            <svg viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.17 14.75l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0020 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25z"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // Mouse Parallax Animation
+        const parallaxImages = document.querySelectorAll('.parallax-image');
+        const hero = document.getElementById('hero');
+
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            parallaxImages.forEach(img => {
+                const speed = parseFloat(img.getAttribute('data-speed'));
+                const x = (mouseX - centerX) * speed;
+                const y = (mouseY - centerY) * speed;
+
+                if (img.classList.contains('image-left')) {
+                    img.style.transform = `translate(${x}px, ${y}px)`;
+                } else if (img.classList.contains('image-right')) {
+                    img.style.transform = `translate(${-x}px, ${-y}px)`;
+                }
+            });
+        });
+
+        // Text animation on scroll/load
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hero-text h2').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add subtle rotation to images on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            parallaxImages.forEach((img, index) => {
+                const rotateX = ((mouseY - centerY) / centerY) * 5;
+                const rotateY = ((mouseX - centerX) / centerX) * 5;
+
+                if (index === 0) {
+                    img.style.transform = `translate(${(mouseX - centerX) * 0.03}px, ${(mouseY - centerY) * 0.03}px) rotate(${rotateY * 0.3}deg)`;
+                } else {
+                    img.style.transform = `translate(${-(mouseX - centerX) * 0.04}px, ${-(mouseY - centerY) * 0.04}px) rotate(${-rotateY * 0.3}deg)`;
+                }
+            });
+        });
+
+        // Form button click animation
+        document.querySelector('.email-form button').addEventListener('click', function() {
+            this.textContent = '✓ SUBSCRIBED!';
+            this.style.background = '#2d8a4e';
+            setTimeout(() => {
+                this.textContent = 'NOTIFY ME';
+                this.style.background = '#8B1A1A';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

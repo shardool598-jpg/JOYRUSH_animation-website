@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=DM+Serif+Display&display=swap");
+
+.joy-rush {
+  --ink: #2d174d;
+  --accent: #ff4b28;
+  --cream: #fffaf2;
+  background: var(--joy-rush-image, url("./10044.png")) center / cover;
+  box-sizing: border-box;
+  color: var(--cream);
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 3.25vw, 4.5rem) clamp(2rem, 3vw, 3.5rem);
+  position: relative;
+  bottom: 414px;
+}
+
+.joy-rush *, .joy-rush *::before, .joy-rush *::after { box-sizing: inherit; }
+
+.joy-rush__shade {
+  background: linear-gradient(180deg, rgb(7 22 23 / .12) 0%, rgb(5 14 16 / .1) 42%, rgb(5 12 14 / .58) 100%);
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.joy-rush__content { margin: 0 auto; max-width: 1800px; }
+
+.joy-rush__intro { margin: 0 auto clamp(3rem, 10vh, 12rem); max-width: 900px; text-align: center; }
+
+.joy-rush h1, .joy-rush h2, .joy-rush p { margin: 0; }
+
+.joy-rush h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(3rem, 5.2vw, 6.25rem);
+  font-weight: 400;
+  letter-spacing: -.04em;
+  line-height: .88;
+  text-transform: uppercase;
+}
+
+.joy-rush__intro p {
+  font: 700 clamp(.85rem, 1.1vw, 1.2rem) / 1.05 "DM Sans", Arial, sans-serif;
+  margin: clamp(1.8rem, 3vw, 3.3rem) auto 0;
+  max-width: 390px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.joy-rush__cards { display: grid; gap: clamp(1rem, 1.45vw, 1.7rem); grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.joy-rush__card {
+  background: var(--cream);
+  border: 2px solid var(--accent);
+  border-radius: 2.25rem;
+  box-shadow: 0 .75rem 0 var(--accent);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(17rem, 24vw, 25rem);
+  opacity: 0;
+  padding: clamp(1.65rem, 2.3vw, 2.85rem);
+  transform: translateY(2.5rem) scale(.96);
+}
+
+.joy-rush__card.in-view {
+  animation: card-enter 700ms cubic-bezier(.2, .8, .2, 1) both;
+  animation-delay: calc(140ms + (var(--card-index) * 130ms));
+}
+
+.joy-rush h2 { font: 400 clamp(1.85rem, 2.2vw, 3rem) / 1 "DM Serif Display", Georgia, serif; letter-spacing: -.035em; }
+
+.joy-rush__card p { font: 700 clamp(.9rem, 1.05vw, 1.15rem) / 1.08 "DM Sans", Arial, sans-serif; margin-top: auto; }
+
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(2.5rem) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 1050px) { .joy-rush__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .joy-rush__intro { margin-bottom: 4rem; } }
+@media (max-width: 600px) { .joy-rush { padding-inline: 1rem; } .joy-rush__cards { grid-template-columns: 1fr; } .joy-rush__card { min-height: 15rem; } }
+@media (prefers-reduced-motion: reduce) { .joy-rush__card { animation: none; } }

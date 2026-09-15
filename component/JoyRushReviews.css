@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;600;700&display=swap");
+
+.jrr-reviews {
+  padding: 60px 20px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  top: 420px;
+  height: 1000px;
+}
+
+.jrr-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  color: #2d1b4e;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 50px;
+}
+
+.jrr-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.jrr-nav-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #2d1b4e;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.jrr-nav-btn:hover {
+  background: #2d1b4e;
+}
+
+.jrr-nav-btn:hover svg {
+  stroke: #faf6f3;
+}
+
+.jrr-nav-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: #2d1b4e;
+  stroke-width: 2;
+  fill: none;
+  transition: stroke 0.3s ease;
+}
+
+.jrr-track-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.jrr-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.jrr-card {
+  width: 38%;
+  background: #faf5f0;
+  border: 2px solid #2d1b4e;
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+ /* Stagger animation
+.jrr-card--stagger {
+  opacity: 0;
+  animation: jrr-card-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes jrr-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+} */
+
+.jrr-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.jrr-stars svg {
+  width: 28px;
+  height: 28px;
+  fill: #2d1b4e;
+}
+
+.jrr-card-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #2d1b4e;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.jrr-card-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2d1b4e;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.jrr-divider {
+  height: 1px;
+  background: #d4c8c0;
+  margin: 24px 0 16px;
+}
+
+.jrr-card-author {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #2d1b4e;
+}
+
+.jrr-float-buttons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+}
+
+.jrr-float-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #e85d3a;
+  background: #faf6f3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.jrr-float-btn:hover {
+  background: #e85d3a;
+}
+
+.jrr-float-btn:hover svg {
+  fill: #faf6f3;
+  stroke: #faf6f3;
+}
+
+.jrr-float-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #e85d3a;
+  stroke: #e85d3a;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .jrr-card {
+    min-width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 640px) {
+  .jrr-card {
+    min-width: 100%;
+  }
+
+  .jrr-reviews {
+    padding: 40px 16px 100px;
+  }
+
+  .jrr-title {
+    font-size: 2.2rem;
+  }
+
+  .jrr-card-title {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@700&family=Inter:wght@400;600;700&display=swap');
+
+.joy-rush-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.joy-rush-page {
+    background-color: #f0a0c0;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(255, 150, 180, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 120, 160, 0.2) 0%, transparent 50%);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    /* overflow-x: hidden; */
+    position: relative;
+    top: -57pxpx;
+}
+
+
+.pink{
+
+
+width: 1890px;
+
+height: 275px;
+
+
+
+
+
+}
+
+/* Noise texture overlay */
+.joy-rush-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+.joy-rush-page .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+/* Logo */
+.joy-rush-page .logo {
+    text-align: center;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.joy-rush-page .logo h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #8B1A1A;
+    font-weight: 700;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Hero Section */
+.joy-rush-page .hero {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.joy-rush-page .hero-text {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.joy-rush-page .hero-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: #8B1A1A;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    animation: textReveal 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.joy-rush-page .hero-text h2:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.joy-rush-page .hero-text h2:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Parallax Images */
+.joy-rush-page .parallax-image {
+    position: absolute;
+    z-index: 3;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+.joy-rush-page .parallax-image img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(139, 26, 26, 0.15));
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.joy-rush-page .image-left {
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+}
+
+.joy-rush-page .image-right {
+    right: -20px;
+    top: 10%;
+    transform: translateY(0);
+    width: 260px;
+}
+
+/* Email Form */
+.joy-rush-page .email-form {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    background: #FFF8F0;
+    border-radius: 12px;
+    padding: 8px 8px 8px 24px;
+    box-shadow: 0 8px 32px rgba(139, 26, 26, 0.15);
+    width: 480px;
+    max-width: 90%;
+    animation: formSlideUp 1s ease-out 0.8s forwards;
+    opacity: 0;
+    rotate: -5deg;
+}
+
+
+.container{
+
+
+
+position: relative;
+top: 165px;
+
+
+
+
+}
+
+
+
+
+
+.joy-rush-page{
+
+height: 1409px !important;
+
+
+
+
+
+
+
+
+
+
+}
+
+
+ .color{
+
+position: relative;
+top: -1px;
+/* background-color: #F05A3C; */
+z-index: 999 ! important; 
+} 
+
+
+.noise-texture{
+/* background-color: #F05A3C; */
+
+/* width: 10%; */
+
+
+width: 1200px;;
+
+
+height: 100px;
+
+z-index: 1000;
+
+position: relative;
+top: 50px;
+
+
+}
+
+
+
+
+
+@keyframes formSlideUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.joy-rush-page .email-form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #8B1A1A;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.joy-rush-page .email-form input::placeholder {
+    color: #c49090;
+    font-weight: 600;
+}
+
+.joy-rush-page .email-form button {
+    background: #8B1A1A;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.joy-rush-page .email-form button:hover {
+    background: #6B1010;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.joy-rush-page .footer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    padding: 40px 0 60px;
+    border-top: 1px solid rgba(139, 26, 26, 0.1);
+}
+
+.joy-rush-page .footer-column h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #8B1A1A;
+    margin-bottom: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.joy-rush-page .footer-column ul {
+    list-style: none;
+}
+
+.joy-rush-page .footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.joy-rush-page .footer-column ul li a {
+    text-decoration: none;
+    color: #8B1A1A;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.joy-rush-page .footer-column ul li a:hover {
+    color: #5a0e0e;
+    transform: translateX(5px);
+}
+
+/* Bottom Icons */
+.joy-rush-page .bottom-icons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 12px;
+    z-index: 100;
+}
+
+.joy-rush-page .icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(139, 26, 26, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #8B1A1A;
+}
+
+.joy-rush-page .icon-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(139, 26, 26, 0.25);
+}
+
+.joy-rush-page .icon-circle svg {
+    width: 24px;
+    height: 24px;
+    fill: #8B1A1A;
+}
+
+/* Text shimmer animation */
+.joy-rush-page .shimmer-text {
+    background: linear-gradient(
+        90deg,
+        #8B1A1A 0%,
+        #a02020 25%,
+        #8B1A1A 50%,
+        #a02020 75%,
+        #8B1A1A 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Pulse animation for images */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .joy-rush-page .hero-text h2 {
+        font-size: 5rem;
+    }
+    .joy-rush-page .image-left, .joy-rush-page .image-right {
+        width: 200px;
+    }
+    .joy-rush-page .footer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .joy-rush-page .hero-text h2 {
+        font-size: 3.5rem;
+    }
+    .joy-rush-page .image-left, .joy-rush-page .image-right {
+        display: none;
+    }
+    .joy-rush-page .email-form {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 20px auto;
+    }
+    .joy-rush-page .footer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
