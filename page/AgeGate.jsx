@@ -974,7 +974,7 @@ export default function AgeGate({
             width: "100%",
             display: "flex",
             justifyContent: "end",
-            padding: "133px 0",
+            padding: "150px 0",
           }}
         >
 
