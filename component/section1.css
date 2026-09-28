@@ -37,12 +37,12 @@ body {
 
 /* ===== Section / Holder ===== */
 .b-about {
-  position: relative;
+  /* position: relative; */
   background: var(--mood-milk);
   padding: 100px 0;
   overflow: hidden;
   position: relative;
-  top: -381px;
+  /* top: -381px; */
 }
 
 .b-about__holder {
